@@ -156,4 +156,30 @@ def actualizar_producto(productos):
             print("Producto actualizado correctamente.")
             return
     print("Producto no encontrado.")
+    
+def eliminar_producto(productos):
+    print("\n=====================================")
+    print("          ELIMINAR PRODUCTO")
+    print("=====================================")
+    codigo = input("Ingrese el codigo del producto que desea eliminar: ").strip()
+    
+    for i, p in enumerate(productos):
+        if p['codigo'] == codigo:
+            print(f"Producto encontrado: {p['nombre']}")
+            confirmacion = input("¿Desea eliminarlo? si / no: ").strip().lower()
+            if confirmacion == 'si':
+                productos.pop(i)
+                print("Producto eliminado correctamente.")
+            else:
+                print("Eliminacion cancelada.")
+            return
+    print("Producto no encontrado.")
+
+def calcular_inventario(productos):
+    print("\n=====================================")
+    total = sum(p['cantidad'] * p['precio'] for p in productos)
+    print(f"El valor total del inventario es de: ${total}")
+
+
+
 
