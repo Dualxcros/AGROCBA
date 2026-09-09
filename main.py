@@ -179,6 +179,57 @@ def calcular_inventario(productos):
     print("\n=====================================")
     total = sum(p['cantidad'] * p['precio'] for p in productos)
     print(f"El valor total del inventario es de: ${total}")
+# ==========================================
+#     FUNCIONES DE LOS RETOS ADICIONALES
+# ==========================================
+
+def mostrar_total_unidades(productos):
+    total = sum(p["cantidad"] for p in productos)
+    print(f"\n=> La cantidad total de unidades en el inventario es: {total}")
+
+def producto_mayor_precio(productos):
+    if not productos:
+        print("\nNo hay productos registrados.")
+        return
+    mayor = max(productos, key=lambda p: p["precio"])
+    print(f"\n=> Producto más caro: {mayor['nombre']} con un precio de ${mayor['precio']}")
+
+def producto_mayor_cantidad(productos):
+    if not productos:
+        print("\nNo hay productos registrados.")
+        return
+    mayor = max(productos, key=lambda p: p["cantidad"])
+    print(f"\n=> Producto con más stock: {mayor['nombre']} con {mayor['cantidad']} unidades")
+
+def consultar_por_categoria(productos):
+    categoria_buscar = input("\nIngrese la categoría que desea buscar: ").strip().lower()
+    encontrados = [p for p in productos if p["categoria"].lower() == categoria_buscar]
+    
+    if encontrados:
+        print(f"\n--- PRODUCTOS DE LA CATEGORÍA: {categoria_buscar.upper()} ---")
+        for p in encontrados:
+            print(f"- {p['nombre']} (Código: {p['codigo']} | Stock: {p['cantidad']})")
+    else:
+        print("\nNo se encontraron productos en esa categoría.")
+
+def ordenar_alfabeticamente(productos):
+    if not productos:
+        print("\nNo hay productos registrados.")
+        return
+    ordenados = sorted(productos, key=lambda p: p["nombre"].lower())
+    
+    print("\n--- PRODUCTOS ORDENADOS ALFABÉTICAMENTE ---")
+    for p in ordenados:
+        print(f"- {p['nombre']} | Categoría: {p['categoria']} | Código: {p['codigo']}")
+
+def bajo_inventario(productos):
+    bajos = [p for p in productos if p["cantidad"] <= 5]
+    if bajos:
+        print("\n--- ALERTA: PRODUCTOS CON BAJO INVENTARIO ---")
+        for p in bajos:
+            print(f"- {p['nombre']} (Stock actual: {p['cantidad']})")
+    else:
+        print("\nTodos los productos tienen un stock saludable (mayor a 5).")
 
 
 
