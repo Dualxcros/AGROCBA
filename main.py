@@ -110,3 +110,50 @@ def buscar_producto(productos):
             print(f"Precio: ${p['precio']}")
             return
     print("Producto no encontrado.")
+
+def actualizar_producto(productos):
+    print("\n=====================================")
+    print("         ACTUALIZAR PRODUCTO")
+    print("=====================================")
+    codigo = input("Ingrese el codigo del producto que desea actualizar: ").strip()
+    
+    for p in productos:
+        if p['codigo'] == codigo:
+            print("Producto encontrado.")
+            
+            nuevo_nombre = input(f"Escriba el nuevo nombre ({p['nombre']}) o presione Enter para omitir: ").strip()
+            if nuevo_nombre: p['nombre'] = nuevo_nombre
+            
+            nueva_categoria = input(f"Escriba la nueva categoria ({p['categoria']}) o presione Enter para omitir: ").strip()
+            if nueva_categoria: p['categoria'] = nueva_categoria
+            
+            while True:
+                nueva_cantidad_str = input(f"Escriba la nueva cantidad ({p['cantidad']}) o presione Enter para omitir: ").strip()
+                if not nueva_cantidad_str:
+                    break
+                try:
+                    nueva_cantidad = int(nueva_cantidad_str)
+                    if nueva_cantidad >= 0:
+                        p['cantidad'] = nueva_cantidad
+                        break
+                    print("La cantidad debe ser mayor o igual a cero.")
+                except ValueError:
+                    print("Por favor, ingrese un número entero válido.")
+
+            while True:
+                nuevo_precio_str = input(f"Escriba el nuevo precio ({p['precio']}) o presione Enter para omitir: ").strip()
+                if not nuevo_precio_str:
+                    break
+                try:
+                    nuevo_precio = float(nuevo_precio_str)
+                    if nuevo_precio > 0:
+                        p['precio'] = nuevo_precio
+                        break
+                    print("El precio debe ser mayor que cero.")
+                except ValueError:
+                    print("Por favor, ingrese un valor numérico válido.")
+
+            print("Producto actualizado correctamente.")
+            return
+    print("Producto no encontrado.")
+
