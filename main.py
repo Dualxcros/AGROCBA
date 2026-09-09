@@ -78,7 +78,7 @@ def registrar_producto(productos):
     }
     productos.append(producto)
     print("Producto registrado correctamente.")
-    
+
 def consultar_productos(productos):
     print("\n=====================================")
     print("         CONSULTAR PRODUCTOS")
@@ -93,3 +93,20 @@ def consultar_productos(productos):
         print(f"Categoria: {p['categoria']}")
         print(f"Cantidad: {p['cantidad']}")
         print(f"Precio: ${p['precio']}")
+
+def buscar_producto(productos):
+    print("\n=====================================")
+    print("           BUSCAR PRODUCTO")
+    print("=====================================")
+    codigo = input("Ingrese el codigo que desea buscar: ").strip()
+    
+    for p in productos:
+        if p['codigo'] == codigo:
+            print("-------------------------------------")
+            print(f"Codigo: {p['codigo']}")
+            print(f"Nombre: {p['nombre']}")
+            print(f"Categoria: {p['categoria']}")
+            print(f"Cantidad: {p['cantidad']}")
+            print(f"Precio: ${p['precio']}")
+            return
+    print("Producto no encontrado.")
