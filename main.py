@@ -284,4 +284,50 @@ def mostrar_menu():
     print("=   8. Salir                          =")
     print("=======================================")
 
+def main():
+    print("=====================================")
+    print("           SISTEMA AGROCBA")
+    print("=====================================")
+    print("Sistema iniciado correctamente")
+    
+    # Se inicializan los datos cargando el JSON
+    productos = cargar_datos()
 
+    while True:
+        mostrar_menu()
+        opcion = input("\nSeleccione una opcion: ").strip()
+
+        if opcion == '1':
+            registrar_producto(productos)
+            guardar_datos(productos)
+            
+        elif opcion == '2':
+            consultar_productos(productos)
+            
+        elif opcion == '3':
+            buscar_producto(productos)
+            
+        elif opcion == '4':
+            actualizar_producto(productos)
+            guardar_datos(productos)
+            
+        elif opcion == '5':
+            eliminar_producto(productos)
+            guardar_datos(productos)
+            
+        elif opcion == '6':
+            calcular_inventario(productos)
+            
+        elif opcion == '7':
+            menu_reportes(productos)
+            
+        elif opcion == '8':
+            print("\nSaliendo del sistema...")
+            break
+            
+        else:
+            print("Opcion invalida. Seleccione una opcion del 1 al 8.")
+
+if __name__ == "__main__":
+    main()
+    
