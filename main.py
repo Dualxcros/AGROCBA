@@ -265,7 +265,6 @@ def menu_reportes(productos):
         else:
             print("Opcion invalida. Intente de nuevo.")
 
-
 # ==========================================
 #         MENÚ PRINCIPAL Y MAIN
 # ==========================================
