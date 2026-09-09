@@ -78,3 +78,18 @@ def registrar_producto(productos):
     }
     productos.append(producto)
     print("Producto registrado correctamente.")
+    
+def consultar_productos(productos):
+    print("\n=====================================")
+    print("         CONSULTAR PRODUCTOS")
+    print("=====================================")
+    if not productos:
+        print("No existen registros.")
+        return
+    for p in productos:
+        print("-------------------------------------")
+        print(f"Codigo: {p['codigo']}")
+        print(f"Nombre: {p['nombre']}")
+        print(f"Categoria: {p['categoria']}")
+        print(f"Cantidad: {p['cantidad']}")
+        print(f"Precio: ${p['precio']}")
