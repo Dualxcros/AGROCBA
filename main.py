@@ -221,6 +221,7 @@ def ordenar_alfabeticamente(productos):
     print("\n--- PRODUCTOS ORDENADOS ALFABÉTICAMENTE ---")
     for p in ordenados:
         print(f"- {p['nombre']} | Categoría: {p['categoria']} | Código: {p['codigo']}")
+        
 
 def bajo_inventario(productos):
     bajos = [p for p in productos if p["cantidad"] <= 5]
@@ -231,6 +232,56 @@ def bajo_inventario(productos):
     else:
         print("\nTodos los productos tienen un stock saludable (mayor a 5).")
 
+def menu_reportes(productos):
+    while True:
+        print("\n=====================================")
+        print("       REPORTES ADICIONALES           ")
+        print("=====================================")
+        print("1. Mostrar cantidad total de unidades")
+        print("2. Ver producto de mayor precio")
+        print("3. Ver producto con mayor stock")
+        print("4. Consultar por categoría")
+        print("5. Ver productos en orden alfabético")
+        print("6. Ver alerta de bajo inventario")
+        print("7. Volver al menú principal")
+        print("=======================================")
+        
+        opcion = input("\nSeleccione una opcion: ").strip()
+        
+        if opcion == "1":
+            mostrar_total_unidades(productos)
+        elif opcion == "2":
+            producto_mayor_precio(productos)
+        elif opcion == "3":
+            producto_mayor_cantidad(productos)
+        elif opcion == "4":
+            consultar_por_categoria(productos)
+        elif opcion == "5":
+            ordenar_alfabeticamente(productos)
+        elif opcion == "6":
+            bajo_inventario(productos)
+        elif opcion == "7":
+            break
+        else:
+            print("Opcion invalida. Intente de nuevo.")
 
+
+# ==========================================
+#         MENÚ PRINCIPAL Y MAIN
+# ==========================================
+
+def mostrar_menu():
+    print("\n=====================================")
+    print("           SISTEMA AGROCBA")
+    print("=====================================")
+    print("=   1. Registrar producto             =")
+    print("=   2. Consultar productos            =")
+    print("=   3. Buscar producto                =")
+    print("=   4. Actualizar producto            =")
+    print("=   5. Eliminar producto              =")
+    print("=   6. Mostrar valor total inventario =")
+    print("=   7. Reportes Adicionales (Retos)   =")
+    print("=   8. Salir                          =")
+    print("=======================================")
 
 
