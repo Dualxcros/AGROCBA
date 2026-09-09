@@ -98,7 +98,7 @@ def buscar_producto(productos):
     print("\n=====================================")
     print("           BUSCAR PRODUCTO")
     print("=====================================")
-    codigo = input("Ingrese el codigo que desea buscar: ").strip()
+    codigo = str(input("Ingrese el codigo que desea buscar: ")).strip()
     
     for p in productos:
         if p['codigo'] == codigo:
